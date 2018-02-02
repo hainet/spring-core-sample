@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -24,6 +25,11 @@ public class ResourceLoaderTest {
     @Autowired
     private ResourceLoader resourceLoader;
 
+    @Test
+    public void resourceLoaderTest() {
+        assertThat(resourceLoader, is(instanceOf(AnnotationConfigApplicationContext.class)));
+    }
+
     /**
      * {@link Resource#getFile}はリソースがファイルシステム上にあることを期待している。
      * そのためクラスパスからの相対パスで指定すると、IDE上ではアクセスに成功するがJarにするとアクセスに失敗する。
@@ -42,6 +48,14 @@ public class ResourceLoaderTest {
         );
     }
 
+    /**
+     * {@link ResourceLoader#getResource(String)}の引数は
+     * 最終的に{@link org.springframework.core.io.DefaultResourceLoader.ClassPathContextResource}に渡る。
+     * ここで先頭の"/"は省略して解釈されるため付与してもしなくてもよい。
+     * {@link ClassPathResource}についても同様。
+     *
+     * @throws IOException
+     */
     @Test
     public void classPathContextResourceTest() throws IOException {
         Resource nothing = resourceLoader.getResource("resource-loader/class-path-context-resource");
