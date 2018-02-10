@@ -4,6 +4,8 @@ import com.sun.org.apache.xpath.internal.operations.String;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
+import java.util.Arrays;
+
 public class AssertTest {
 
     @Test(expected = IllegalStateException.class)
@@ -73,5 +75,14 @@ public class AssertTest {
         Assert.doesNotContain(null, "Does not contain", "Text to search is null.");
         Assert.doesNotContain("Does not contain", "", "Substring is empty.");
         Assert.doesNotContain("Does not contain", null, "Substring is null.");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void notEmptyTest() {
+        // OK
+        Assert.notEmpty(Arrays.asList("Not empty"), "It is not empty.");
+
+        // NG
+        Assert.notEmpty(Arrays.asList(), "It is empty.");
     }
 }
