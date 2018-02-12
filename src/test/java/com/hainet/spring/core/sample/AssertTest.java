@@ -1,6 +1,5 @@
 package com.hainet.spring.core.sample;
 
-import com.sun.org.apache.xpath.internal.operations.String;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
@@ -84,5 +83,14 @@ public class AssertTest {
 
         // NG
         Assert.notEmpty(Arrays.asList(), "It is empty.");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void noNullElementsTest() {
+        // OK
+        Assert.noNullElements(new String[]{"", ""}, "No null elements.");
+
+        // NG
+        Assert.noNullElements(new String[]{"", null}, "Null elements.");
     }
 }
