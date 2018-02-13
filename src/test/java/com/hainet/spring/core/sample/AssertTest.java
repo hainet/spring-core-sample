@@ -88,10 +88,10 @@ public class AssertTest {
     @Test(expected = IllegalArgumentException.class)
     public void noNullElementsTest() {
         // OK
-        Assert.noNullElements(new String[]{"", ""}, "No null elements.");
+        Assert.noNullElements(new String[]{"", ""}, "It has no null elements.");
 
         // NG
-        Assert.noNullElements(new String[]{"", null}, "Null elements.");
+        Assert.noNullElements(new String[]{"", null}, "It has null elements.");
     }
 
     @Test(expected = IllegalArgumentException.class)
