@@ -93,4 +93,32 @@ public class AssertTest {
         // NG
         Assert.noNullElements(new String[]{"", null}, "Null elements.");
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void notEmptyCollectionTest() {
+        // OK
+        Assert.notEmpty(Arrays.asList(""), "It is not empty.");
+        Assert.notEmpty(Arrays.asList("", null), "Null is also ok.");
+
+        // NG
+        Assert.notEmpty(Arrays.asList(), "It is empty.");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void isInstanceOfTest() {
+        // OK
+        Assert.isInstanceOf(String.class, "value", "It is String value.");
+
+        // NG
+        Assert.isInstanceOf(String.class, 1, "It is int value.");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void isAssignableTest() {
+        // OK
+        Assert.isAssignable(Exception.class, IllegalArgumentException.class, "It is assignable.");
+
+        // NG
+        Assert.isAssignable(Error.class, IllegalArgumentException.class, "It is not assignable.");
+    }
 }
