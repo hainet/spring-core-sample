@@ -122,4 +122,16 @@ public class StringUtilsTest {
         assertThat(StringUtils.endsWithIgnoreCase("null", null), is(false));
         assertThat(StringUtils.endsWithIgnoreCase(null, null), is(false));
     }
+
+    @Test(expected = NullPointerException.class)
+    public void substringMatchTest() {
+        // True
+        assertThat(StringUtils.substringMatch("Original", 0, "Original"), is(true));
+        assertThat(StringUtils.substringMatch("Original", 3, "ginal"), is(true));
+        assertThat(StringUtils.substringMatch("Original", 0, ""), is(true));
+
+        // False
+        assertThat(StringUtils.substringMatch("Original", 0, "OriginalOriginal"), is(false));
+        StringUtils.substringMatch(null, 0, null);
+    }
 }
