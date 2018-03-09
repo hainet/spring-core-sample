@@ -134,4 +134,14 @@ public class StringUtilsTest {
         assertThat(StringUtils.substringMatch("Original", 0, "OriginalOriginal"), is(false));
         StringUtils.substringMatch(null, 0, null);
     }
+
+    @Test
+    public void countOccurrencesOfTest() {
+        assertThat(StringUtils.countOccurrencesOf("122333", "1"), is(1));
+        assertThat(StringUtils.countOccurrencesOf("122333", "2"), is(2));
+        assertThat(StringUtils.countOccurrencesOf("122333", "3"), is(3));
+
+        assertThat(StringUtils.countOccurrencesOf("", ""), is(0));
+        assertThat(StringUtils.countOccurrencesOf(null, null), is(0));
+    }
 }
