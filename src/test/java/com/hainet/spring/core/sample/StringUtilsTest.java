@@ -144,4 +144,12 @@ public class StringUtilsTest {
         assertThat(StringUtils.countOccurrencesOf("", ""), is(0));
         assertThat(StringUtils.countOccurrencesOf(null, null), is(0));
     }
+
+    @Test
+    public void replaceTest() {
+        assertThat(StringUtils.replace("122333", "2", "4"), is("144333"));
+
+        assertThat(StringUtils.replace("122333", "", ""), is("122333"));
+        assertThat(StringUtils.replace("122333", null, null), is("122333"));
+    }
 }
