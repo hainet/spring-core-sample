@@ -160,4 +160,12 @@ public class StringUtilsTest {
         assertThat(StringUtils.delete("122333", ""), is("122333"));
         assertThat(StringUtils.delete("122333", null), is("122333"));
     }
+
+    @Test
+    public void deleteAnyTest() {
+        assertThat(StringUtils.deleteAny("122333", "23"), is("1"));
+
+        assertThat(StringUtils.deleteAny("122333", ""), is("122333"));
+        assertThat(StringUtils.deleteAny("122333", null), is("122333"));
+    }
 }

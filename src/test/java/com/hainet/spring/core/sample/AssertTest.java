@@ -5,7 +5,6 @@ import org.springframework.util.Assert;
 
 import java.util.Arrays;
 
-// 処理の冒頭の判定に利用する。
 public class AssertTest {
 
     @Test(expected = IllegalStateException.class)
