@@ -168,4 +168,12 @@ public class StringUtilsTest {
         assertThat(StringUtils.deleteAny("122333", ""), is("122333"));
         assertThat(StringUtils.deleteAny("122333", null), is("122333"));
     }
+
+    @Test
+    public void quoteTest() {
+        assertThat(StringUtils.quote("hainet"), is("'hainet'"));
+
+        assertThat(StringUtils.quote(""), is("''"));
+        assertThat(StringUtils.quote(null), is(nullValue()));
+    }
 }
