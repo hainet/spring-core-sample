@@ -176,4 +176,14 @@ public class StringUtilsTest {
         assertThat(StringUtils.quote(""), is("''"));
         assertThat(StringUtils.quote(null), is(nullValue()));
     }
+
+    @Test
+    public void quoteIfStringTest() {
+        assertThat(StringUtils.quoteIfString("hainet"), is("'hainet'"));
+        final Object object = new Object();
+        assertThat(StringUtils.quoteIfString(object), is(object));
+
+        assertThat(StringUtils.quoteIfString(""), is("''"));
+        assertThat(StringUtils.quoteIfString(null), is(nullValue()));
+    }
 }
