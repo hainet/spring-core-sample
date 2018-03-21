@@ -186,4 +186,12 @@ public class StringUtilsTest {
         assertThat(StringUtils.quoteIfString(""), is("''"));
         assertThat(StringUtils.quoteIfString(null), is(nullValue()));
     }
+
+    @Test(expected = NullPointerException.class)
+    public void unqualifyTest() {
+        assertThat(StringUtils.unqualify("com.hainet"), is("hainet"));
+
+        assertThat(StringUtils.unqualify(""), is(""));
+        assertThat(StringUtils.unqualify(null), is(nullValue()));
+    }
 }
