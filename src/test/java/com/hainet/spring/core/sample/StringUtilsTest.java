@@ -194,4 +194,20 @@ public class StringUtilsTest {
         assertThat(StringUtils.unqualify(""), is(""));
         assertThat(StringUtils.unqualify(null), is(nullValue()));
     }
+
+    @Test
+    public void capitalizeTest() {
+        assertThat(StringUtils.capitalize("hainet"), is("Hainet"));
+
+        assertThat(StringUtils.capitalize(""), is(""));
+        assertThat(StringUtils.capitalize(null), is(nullValue()));
+    }
+
+    @Test
+    public void uncapitalizeTest() {
+        assertThat(StringUtils.uncapitalize("HAINET"), is("hAINET"));
+
+        assertThat(StringUtils.uncapitalize(""), is(""));
+        assertThat(StringUtils.uncapitalize(null), is(nullValue()));
+    }
 }
