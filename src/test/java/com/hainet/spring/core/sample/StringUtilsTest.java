@@ -210,4 +210,20 @@ public class StringUtilsTest {
         assertThat(StringUtils.uncapitalize(""), is(""));
         assertThat(StringUtils.uncapitalize(null), is(nullValue()));
     }
+
+    @Test
+    public void getFilenameTest() {
+        assertThat(StringUtils.getFilename("com/hainet.java"), is("hainet.java"));
+
+        assertThat(StringUtils.getFilename(""), is(""));
+        assertThat(StringUtils.getFilename(null), is(nullValue()));
+    }
+
+    @Test
+    public void getFilenameExtensionTest() {
+        assertThat(StringUtils.getFilenameExtension("com/hainet.java"), is("java"));
+
+        assertThat(StringUtils.getFilenameExtension(""), is(nullValue()));
+        assertThat(StringUtils.getFilenameExtension(null), is(nullValue()));
+    }
 }
