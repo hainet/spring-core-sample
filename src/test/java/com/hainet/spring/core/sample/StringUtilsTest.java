@@ -226,4 +226,12 @@ public class StringUtilsTest {
         assertThat(StringUtils.getFilenameExtension(""), is(nullValue()));
         assertThat(StringUtils.getFilenameExtension(null), is(nullValue()));
     }
+
+    @Test
+    public void stripFilenameExtensionTest() {
+        assertThat(StringUtils.stripFilenameExtension("com/hainet.java"), is("com/hainet"));
+
+        assertThat(StringUtils.stripFilenameExtension(""), is(""));
+        assertThat(StringUtils.stripFilenameExtension(null), is(nullValue()));
+    }
 }
