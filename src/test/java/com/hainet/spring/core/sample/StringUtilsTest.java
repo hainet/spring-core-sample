@@ -234,4 +234,18 @@ public class StringUtilsTest {
         assertThat(StringUtils.stripFilenameExtension(""), is(""));
         assertThat(StringUtils.stripFilenameExtension(null), is(nullValue()));
     }
+
+    @Test(expected = NullPointerException.class)
+    public void applyRelativePathTest() {
+        assertThat(StringUtils.applyRelativePath("com/", "hainet"), is("com/hainet"));
+        assertThat(StringUtils.applyRelativePath("com/", "/hainet"), is("com/hainet"));
+
+        assertThat(StringUtils.applyRelativePath("/com", "hainet"), is("/hainet"));
+
+        assertThat(StringUtils.applyRelativePath("", "hainet"), is("hainet"));
+        assertThat(StringUtils.applyRelativePath("com/", ""), is("com/"));
+
+        StringUtils.applyRelativePath("com/", null);
+        StringUtils.applyRelativePath(null, "hainet");
+    }
 }
