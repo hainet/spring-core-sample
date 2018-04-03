@@ -3,6 +3,9 @@ package com.hainet.spring.core.sample;
 import org.junit.Test;
 import org.springframework.util.StringUtils;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
@@ -247,5 +250,15 @@ public class StringUtilsTest {
 
         StringUtils.applyRelativePath("com/", null);
         StringUtils.applyRelativePath(null, "hainet");
+    }
+
+    @Test
+    public void sortStringArrayTest() {
+        final String[] array = {"2", "1"};
+        final String[] expected = {"1", "2"};
+        assertThat(StringUtils.sortStringArray(array), is(expected));
+
+        final String[] empty = {};
+        assertThat(StringUtils.sortStringArray(null), is(empty));
     }
 }
