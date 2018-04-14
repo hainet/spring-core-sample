@@ -3,8 +3,8 @@ package com.hainet.spring.core.sample;
 import org.junit.Test;
 import org.springframework.util.StringUtils;
 
-import java.util.Collections;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -260,5 +260,22 @@ public class StringUtilsTest {
 
         final String[] empty = {};
         assertThat(StringUtils.sortStringArray(null), is(empty));
+    }
+
+    @Test
+    public void toStringArrayTest() {
+        List<String> strings = new ArrayList<>();
+
+        strings.clear();
+        strings.add("hainet");
+        String[] one = {"hainet"};
+        assertThat(StringUtils.toStringArray(strings), is(one));
+
+        strings.clear();
+        String[] empty = {};
+        assertThat(StringUtils.toStringArray(strings), is(empty));
+
+        strings = null;
+        assertThat(StringUtils.toStringArray(strings), is(nullValue()));
     }
 }
